@@ -1,0 +1,28 @@
+{
+    "private": true,
+    "scripts": {
+       
+        "dev": "npm run development",
+        "development": "mix",
+        "watch": "mix watch",
+        "watch-poll": "mix watch -- --watch-options-poll=1000",
+        "hot": "mix watch --hot",
+        "prod": "npm run production",
+        "production": "mix --production",
+         "build": "webpack --mode production",
+        "builddev": "webpack --mode development"
+    },
+    "devDependencies": {
+        "@tailwindcss/forms": "^0.5.3",
+        "@tailwindcss/typography": "^0.5.8",
+        "alpinejs": "^3.10.5",
+        "axios": "^1.2",
+        "laravel-mix": "^6.0.49",
+        "lodash": "^4.17.21",
+        "postcss": "^8.4.19",
+        "postcss-import": "^15.0.0",
+        "tailwindcss": "^3.2.4",
+        "webpack": "^5.75.0",
+        "webpack-cli": "^5.0.0"
+    }
+}

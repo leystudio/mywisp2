@@ -1,0 +1,34 @@
+import:
+  - recipe/laravel.php
+  - contrib/npm.php
+
+config:
+  repository: "https://github.com/leystudio/mywisp"
+
+hosts:
+  mywisp:
+    remote_user: root
+    hostname: mywisp.online
+    deploy_path: "/var/www/{{hostname}}"
+
+tasks:
+  deploy:
+    - deploy:prepare
+    - deploy:vendors
+    - artisan:storage:link
+    - artisan:config:cache
+    - artisan:route:cache
+    - artisan:view:cache
+    - artisan:event:cache
+    - artisan:migrate
+    - npm:install
+    - build
+    - deploy:publish
+
+  build:
+    - cd: "{{release_path}}"
+    - build": "webpack --mode production"
+    - builddev: "webpack --mode development"
+
+after:
+  deploy:failed: deploy:unlock
